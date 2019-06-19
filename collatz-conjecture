@@ -1,0 +1,27 @@
+#Algorithms project 1
+#Collatz Conjecture - Start with a number n > 1. Find the number of steps it takes to reach one 
+#using the following process: If n is even, divide it by 2. If n is odd, multiply it by 3 and add 1.
+
+def collatz_conjecture():
+    steps=0 #initialize counter
+    while True: # Loop system to catch all possible input errors
+        num=input('Please chose any interger, whole number, greater than 1. ') #user prompted to provide a number
+        try:
+            num=int(num) #catches type-error 
+        except:
+            print("Whoops, that's not a whole number. Let's try again :)") #informs user of type-error and user retrys
+        else:
+            if num <=1: #catches error for conditional requirement of number
+                print("I'm sorry but that isn't a number greater than 1. Let's try again :)")
+            else:
+                break #exits loop and allows algorithm to run
+    original_num=num #saves the user input number for reference
+    while num != 1: #algorithm will run until user input number is modified to equal 1
+        if num%2==0: #checks if number is even
+            num=num/2   #number modified with division by 2
+            steps+=1 # adds 1 step to the counter
+        else:
+            num=num*3+1 #number modified with multiplication by 3 and additon of 1
+            steps+=1 # adds 1 step to the counter
+    #once the user input number is modified to equal one the loop will stop and the summary prompt will be displayed
+    print(f'There were {steps} step(s) taken for {original_num} to reach 1 according to the Collatz Conjecture.')
